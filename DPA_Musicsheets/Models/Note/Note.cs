@@ -13,21 +13,27 @@ namespace DPA_Musicsheets.Models.Note
 
         private Duration duration;
 
+        private Boolean point; //if true note duration = duration + half of duration (  duration = 4 + (4/2))
+
+
         public Note(Key key, Duration duration)
         {
             this.key = key;
             this.duration = duration;
         }
 
-        public Note(Key key)
+        public int CalcDurationValue(int baseValue = 1)
         {
-            this.key = key;
-            this.duration = Duration.Whole;
+            int d = (int)this.duration;
+            if (this.point) d += d / 2;
+
+            return baseValue / d;
         }
 
 
         public Key Key { get => key; set => key = value; }
 
         public Duration Duration { get => duration; set => duration = value; }
+        public bool Point { get => Point; set => Point = value; }
     }
 }

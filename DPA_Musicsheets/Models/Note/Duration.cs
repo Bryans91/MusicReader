@@ -8,10 +8,10 @@ namespace DPA_Musicsheets.Models.Note
 {
     public enum Duration
     {
-        Whole,
-        Half,
-        Quarter,
-        Eighth,
-        Sixteenth
+        Whole = 1,
+        Half = 2,
+        Quarter = 4,
+        Eighth = 8,
+        Sixteenth = 16,
     }
 }

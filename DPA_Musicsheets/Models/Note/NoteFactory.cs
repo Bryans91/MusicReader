@@ -27,21 +27,34 @@ namespace DPA_Musicsheets.Models.Note
             }
         }
 
+        public Note CreateNote(Key key, Duration duration)
+        {
+            //use this create for possible extra steps
+
+            return new Note(key, duration);
+        }
 
         public Note CreateNote(string key, int duration)
         {
             Duration mDuration = Symbols.GetDuration(duration);
             Key mKey = Symbols.GetKey(key);
 
-            return new Note(mKey, mDuration);
+            return this.CreateNote(mKey, mDuration);
         }
 
         public Note CreateNote(string key)
         {
           
             Key mKey = Symbols.GetKey(key);
+            Duration mDuration = Symbols.GetDuration(1);
 
-            return new Note(mKey);
+            return this.CreateNote(mKey, mDuration);
+        }
+
+        public Note CreateNote(Key key, int duration)
+        {
+            Duration mDuration = Symbols.GetDuration(duration);
+            return this.CreateNote(key, mDuration);
         }
 
 
