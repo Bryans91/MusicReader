@@ -8,6 +8,6 @@ namespace DPA_Musicsheets.Managers.Loaders
 {
     interface ILoader
     {
-        void LoadFile(String fileName);
+        string LoadFile(String fileName);
     }
 }

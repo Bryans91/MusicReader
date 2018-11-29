@@ -28,22 +28,23 @@ namespace DPA_Musicsheets.Managers.Loaders
             }
         }
 
-        public void LoadFile(string fileName)
+        public string LoadFile(string fileName)
         {
             string ext = Path.GetExtension(fileName);
-
+            string result;
             switch (ext)
             {
                 case ".mid":
-                    this.loader.LoadMidi(fileName);
+                    result = this.loader.LoadMidi(fileName);
                     break;
                 case ".ly":
-                    this.loader.LoadLily(fileName);
+                    result = this.loader.LoadLily(fileName);
                     break;
                 default:
                     throw new Exception("Something went wrong loading the " + ext + " file");
             }
 
+            return result;
         }
     }
 }
