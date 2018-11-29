@@ -48,7 +48,9 @@ namespace DPA_Musicsheets.Managers
         /// <param name="fileName"></param>
         public void OpenFile(string fileName)
         {
-
+            //replace with adapter
+            // Loader loader = new Loader();
+            // loader.LoadFile(fileName)
             if (Path.GetExtension(fileName).EndsWith(".mid"))
             {
                 MidiSequence = new Sequence();

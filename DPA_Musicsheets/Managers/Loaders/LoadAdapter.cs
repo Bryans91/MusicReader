@@ -31,20 +31,16 @@ namespace DPA_Musicsheets.Managers.Loaders
         public string LoadFile(string fileName)
         {
             string ext = Path.GetExtension(fileName);
-            string result;
+
             switch (ext)
             {
                 case ".mid":
-                    result = this.loader.LoadMidi(fileName);
-                    break;
+                    return this.loader.LoadMidi(fileName);
                 case ".ly":
-                    result = this.loader.LoadLily(fileName);
-                    break;
+                    return this.loader.LoadLily(fileName);
                 default:
                     throw new Exception("Something went wrong loading the " + ext + " file");
             }
-
-            return result;
         }
     }
 }
