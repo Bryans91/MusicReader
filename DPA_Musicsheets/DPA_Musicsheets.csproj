@@ -103,10 +103,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Managers\Loaders\IAdvancedLoader.cs" />
+    <Compile Include="Managers\Loaders\ILoader.cs" />
+    <Compile Include="Managers\Loaders\LilypondLoader.cs" />
+    <Compile Include="Managers\Loaders\LoadAdapter.cs" />
+    <Compile Include="Managers\Loaders\MidiLoader.cs" />
     <Compile Include="Managers\MidiToLilyHelper.cs" />
     <Compile Include="Managers\MusicLoader.cs" />
     <Compile Include="Models\LilypondToken.cs" />
     <Compile Include="Models\LilypondTokenKind.cs" />
+    <Compile Include="Models\Note\Bar.cs" />
     <Compile Include="Models\Note\Duration.cs" />
     <Compile Include="Models\Note\Key.cs" />
     <Compile Include="Models\Note\Note.cs" />
@@ -230,6 +236,7 @@
     <Content Include="Files\Eenvoudige voorbeeldfiles\Rusten.ly" />
     <Content Include="Files\Eenvoudige voorbeeldfiles\Standaard_noten.ly" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
