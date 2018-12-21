@@ -22,7 +22,8 @@ namespace DPA_Musicsheets.Models.Note
 
         private Bar Repeat { get => Repeat; set => Repeat = value; }
 
-        private Boolean repeated = false;
+        private int repeated = 0;
+        private int repeatCount = 0;
 
         public Bar()
         {
@@ -44,9 +45,9 @@ namespace DPA_Musicsheets.Models.Note
 
 
             //send to next
-            if (this.IsRepeat() && repeated == false)
+            if (this.IsRepeat() && repeated < repeatCount)
             {
-                this.repeated = true;
+                this.repeated++;
                 this.Repeat.Handle();
             }
             else

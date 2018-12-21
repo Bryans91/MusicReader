@@ -11,6 +11,8 @@ namespace DPA_Musicsheets.Models.Note
 
         private Key key;
 
+        private int keycode { get; set; }
+
         private Duration duration;
 
         private Boolean point; //if true note duration = duration + half of duration (  duration = 4 + (4/2))
