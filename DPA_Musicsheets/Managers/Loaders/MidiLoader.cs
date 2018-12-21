@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sanford.Multimedia.Midi;
 using DPA_Musicsheets.Models.Note;
+using DPA_Musicsheets.Managers.Loaders.Strategy;
 
 namespace DPA_Musicsheets.Managers.Loaders
 {
@@ -19,15 +20,52 @@ namespace DPA_Musicsheets.Managers.Loaders
 
         public MTrack LoadMidi(string fileName)
         {
-            MTrack track = new MTrack("meta");
+           
 
             MidiSequence = new Sequence();
             MidiSequence.Load(fileName);
 
-
-            return track;
+            return this.MidiToDomain(MidiSequence);
         }
 
+        public MTrack MidiToDomain(Sequence sequence)
+        {
+            MTrack mTrack = new MTrack("meta");
+
+            for (int i = 0; i < sequence.Count(); i++)
+            {
+                Track track = sequence[i];
+
+                foreach (var midiEvent in track.Iterator())
+                {
+                    IMidiMessage midiMessage = midiEvent.MidiMessage;
+                    switch (midiMessage.MessageType)
+                    {
+                        case MessageType.Meta:
+                            var metaMessage = midiMessage as MetaMessage;
+                            if (StrategyList.MetaMap.ContainsKey(metaMessage.MetaType))
+                            {
+                                mTrack.strategy = StrategyList.MetaMap[metaMessage.MetaType];
+                            }
+                            mTrack.strategy.execute();
+
+                            break;
+
+                        case MessageType.Channel:
+
+                            //TODO
+                            break;
+
+                    }
+                }
+
+            }
+
+
+            return mTrack;
+        }
+
+        
         #region Midi loading (loads midi to lilypond)
         /// <summary>
         /// TODO: Create our own domain classes to be independent of external libraries/languages.
@@ -142,3 +180,4 @@ namespace DPA_Musicsheets.Managers.Loaders
 
     }
 }
+

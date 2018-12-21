@@ -109,6 +109,10 @@
     <Compile Include="Managers\Loaders\LilypondLoader.cs" />
     <Compile Include="Managers\Loaders\LoadAdapter.cs" />
     <Compile Include="Managers\Loaders\MidiLoader.cs" />
+    <Compile Include="Managers\Loaders\Strategy\EndOfTrackStrategy.cs" />
+    <Compile Include="Managers\Loaders\Strategy\IStrategy.cs" />
+    <Compile Include="Managers\Loaders\Strategy\TempoStrategy.cs" />
+    <Compile Include="Managers\Loaders\Strategy\TimeSignatureStrategy.cs" />
     <Compile Include="Managers\MidiToLilyHelper.cs" />
     <Compile Include="Managers\MusicLoader .OLD.cs" />
     <Compile Include="Managers\MusicLoader.cs" />

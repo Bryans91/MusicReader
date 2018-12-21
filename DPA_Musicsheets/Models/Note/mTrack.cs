@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DPA_Musicsheets.Managers.Loaders.Strategy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace DPA_Musicsheets.Models.Note
         //Maatsoort
         private string Name { get; set; }
         private Bar FirstBar { get; set; }
+
+        public IStrategy strategy { get; set; }
 
         private int Tempo { get; set; }
     
